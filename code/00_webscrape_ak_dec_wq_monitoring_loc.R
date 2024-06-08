@@ -50,7 +50,7 @@ pacman::p_load(docxtractr,
 download_dir <- "C:/Users/Breanna.Xiong/Downloads"
 
 ## output directory
-data_dir <- "C:/Users/Breanna.Xiong/Documents/R Scripts/Alaska Aquaculture/data/a_raw_data/constraints"
+data_dir <- "C:/Users/Breanna.Xiong/Documents/R Scripts/ak_aoa/data/aa_exploration_data/constraints"
 
 
 #####################################
