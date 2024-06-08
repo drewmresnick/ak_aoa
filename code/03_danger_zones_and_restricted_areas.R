@@ -98,7 +98,7 @@ code_dict <-list(study_area = c("cordova",
                                  "se",
                                  "si",
                                  "va",
-                                 "wa"))
+                                 "wr"))
 
 
 #####################################
