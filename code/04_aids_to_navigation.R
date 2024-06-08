@@ -140,7 +140,7 @@ for(i in 1:length(code_dict$study_area)){
   ## source: https://marinecadastre.gov/downloads/data/mc/AtoN.zip			
   ## mapServer: https://www.fisheries.noaa.gov/inport/item/56120
   ### data
-  aton <- sf::st_read(dsn = raw_constraints_gpkg, layer = uniqueID) %>% clean_data()
+  read_data <- sf::st_read(dsn = raw_constraints_gpkg, layer = uniqueID) %>% clean_data()
   
   # name split
   id <- strsplit(uniqueID, "_(?!.*_)", perl=TRUE)[[1]]
@@ -154,7 +154,7 @@ for(i in 1:length(code_dict$study_area)){
   intermediate_gpkg <- paste(study_area_dir, dict_study, "b_intermediate_data/constraints/constraints.gpkg", sep = "/")
   
   ## run the export tool
-  sf::st_write(obj = aton, dsn = intermediate_gpkg, out_code , append = F)
+  sf::st_write(obj = read_data, dsn = intermediate_gpkg, out_code , append = F)
 }
 
 
