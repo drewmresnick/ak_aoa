@@ -140,7 +140,7 @@ for(i in 1:length(code_dict$study_area)){
   ## source: https://marinecadastre.gov/downloads/data/mc/DangerZoneRestrictedArea.zip
   ## mapServer: https://coast.noaa.gov/arcgis/rest/services/OceanReports/DangerZonesAndRestrictedAreas/MapServer/0/metadata
   ### data
-  danger_zones <- sf::st_read(dsn = raw_constraints_gpkg, layer = uniqueID) %>% clean_data()
+  read_data <- sf::st_read(dsn = raw_constraints_gpkg, layer = uniqueID) %>% clean_data()
   
   # name split by the "_"
   id <- strsplit(uniqueID, "_(?!.*_)", perl=TRUE)[[1]]
@@ -154,7 +154,7 @@ for(i in 1:length(code_dict$study_area)){
   intermediate_gpkg <- paste(study_area_dir, dict_study, "b_intermediate_data/constraints/constraints.gpkg", sep = "/")
   
   ## run the export tool
-  sf::st_write(obj = danger_zones, dsn = intermediate_gpkg, out_code , append = F)
+  sf::st_write(obj = read_data, dsn = intermediate_gpkg, out_code , append = F)
 }
 
 
