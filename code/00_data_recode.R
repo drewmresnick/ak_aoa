@@ -52,13 +52,13 @@ submodel <- "cs"
 
 # set directories
 ## submodel raw data directory
-data_dir <- "C:/Users/Breanna.Xiong/Documents/R Scripts/Alaska Aquaculture/data/aa_exploration_data/constraints"
+data_dir <- "C:/Users/Breanna.Xiong/Documents/R Scripts/ak_aoa/data/aa_exploration_data/constraints"
 
 list.files(data_dir)
 list.dirs(data_dir, recursive = TRUE)
 
-## natural resources submodel geopackage
-constraints_geopackage <- "C:/Users/Breanna.Xiong/Documents/R Scripts/Alaska Aquaculture/data/aa_exploration_data/constraints/constraints.gpkg"
+## constraints submodel geopackage
+constraints_geopackage <- "C:/Users/Breanna.Xiong/Documents/R Scripts/ak_aoa/data/aa_exploration_data/constraints/constraints.gpkg"
 
 #####################################
 #####################################
@@ -84,6 +84,7 @@ wrecksobs <- sf::st_read(dsn = file.path(data_dir, "WreckObstruction/WreckObstru
 deepseacoral <- sf::st_read(dsn = file.path("C:/GIS/Projects/ak_aoa_constraints/ak_aoa_constraints.gdb"),
                                 layer = sf::st_layers(file.path("C:/GIS/Projects/ak_aoa_constraints/ak_aoa_constraints.gdb"))[[1]][grep(pattern = "deep_sea_coral_sponge_pts",
                                                                                                                                 sf::st_layers(dsn = file.path("C:/GIS/Projects/ak_aoa_constraints/ak_aoa_constraints.gdb"))[[1]])])
+
 
 # NOAA Charted Submarine Cables ak_cs_005
 submarine <- sf::st_read(dsn = file.path(data_dir, "SubmarineCable/NOAAChartedSubmarineCables.gdb"),
