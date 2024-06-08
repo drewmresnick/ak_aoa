@@ -43,8 +43,8 @@ pacman::p_load(arcpullr,
 
 #####################################
 #####################################
-
-data_dir <- "C:/Users/Breanna.Xiong/Documents/R Scripts/Alaska Aquaculture/data/a_raw_data/constraints"
+# exploration data directory for constraints
+data_dir <- "C:/Users/Breanna.Xiong/Documents/R Scripts/ak_aoa/data/aa_exploration_data/constraints"
 
 #####################################
 #####################################
