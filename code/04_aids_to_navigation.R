@@ -95,7 +95,7 @@ code_dict <-list(study_area = c("cordova",
                                 "se",
                                 "si",
                                 "va",
-                                "wa"))
+                                "wr"))
 
 ###################################
 # This section cleans the data and "clips" the data to our area of interest. 
