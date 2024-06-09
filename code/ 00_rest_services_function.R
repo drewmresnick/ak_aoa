@@ -46,6 +46,7 @@ pacman::p_load(arcpullr,
 # exploration data directory for constraints
 data_dir <- "C:/Users/Breanna.Xiong/Documents/R Scripts/ak_aoa/data/aa_exploration_data/constraints"
 
+
 #####################################
 #####################################
 
@@ -253,7 +254,7 @@ parallel::stopCluster(cl = cl)
 
 #####################################
 
-# AKG523000 Offshore Seafood Processors Line of Operation
+# AKG523000 Offshore Seafood Processors Permitted Vessels 
 
 rest_services_function <- function(url_list, base_url, data_dir){
   base_url <- base_url
@@ -263,7 +264,7 @@ rest_services_function <- function(url_list, base_url, data_dir){
   data <- arcpullr::get_spatial_layer(data_url)
   
   # ***warning: change depending on the dataset wanted
-  dir_name <- "offshore_seafood_processors_line_of_operation"
+  dir_name <- "offshore_seafood_processors_permitted_vessels"
   
   # create new directory for data
   dir_create <- dir.create(file.path(data_dir, dir_name))
@@ -275,7 +276,7 @@ rest_services_function <- function(url_list, base_url, data_dir){
 
 
 url_list <- c(
-  "services/Water/Seafood_Processing/MapServer/7"
+  "services/Water/Seafood_Processing/MapServer/6"
 )
 
 parallel::detectCores()[1]
