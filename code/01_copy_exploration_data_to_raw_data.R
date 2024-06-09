@@ -253,6 +253,22 @@ steller_sea_lion_haulout_buffers <- sf::st_read(dsn = paste(data_dir, "constrain
                                                                                                                                 sf::st_layers(dsn = paste(data_dir, "constraints.gpkg", sep = "/"))[[1]])])
 
 
+# POA Civil works projects- Navigation Projects	ak_cs_041
+poa_navigation_projects <- sf::st_read(dsn = paste(data_dir, "constraints.gpkg", sep = "/"),
+                                       layer = sf::st_layers(paste(data_dir, "constraints.gpkg", sep = "/"))[[1]][grep(pattern = "ak_cs_041",
+                                                                                                                       sf::st_layers(dsn = paste(data_dir, "constraints.gpkg", sep = "/"))[[1]])])
+
+
+
+
+
+# POA Civil works projects- Erosion Protection and Flood Mitigation Projects	ak_cs_042
+poa_erosion_protection <- sf::st_read(dsn = paste(data_dir, "constraints.gpkg", sep = "/"),
+                                      layer = sf::st_layers(paste(data_dir, "constraints.gpkg", sep = "/"))[[1]][grep(pattern = "ak_cs_042",
+                                                                                                                      sf::st_layers(dsn = paste(data_dir, "constraints.gpkg", sep = "/"))[[1]])])
+
+
+
 # Land Status within the National Wildlife Refuges of Alaska: Boundaries Refuge	ak_cs_043
 landstatus_boundaries_refuge <- sf::st_read(dsn = paste(data_dir, "constraints.gpkg", sep = "/"),
                                             layer = sf::st_layers(paste(data_dir, "constraints.gpkg", sep = "/"))[[1]][grep(pattern = "ak_cs_043",
@@ -313,6 +329,8 @@ data <- list(dangerzones,
              Alaska_DEC_WQ_Monitoring_Locations,
              harbor_seal_haulouts,
              steller_sea_lion_haulout_buffers,
+             poa_navigation_projects,
+             poa_erosion_protection,
              landstatus_boundaries_refuge,
              ocean_disposal,
              pipelines,
@@ -359,6 +377,8 @@ data_codes <- c("ak_cs_001",
               "ak_cs_035",
               "ak_cs_036",
               "ak_cs_038",
+              "ak_cs_041",
+              "ak_cs_042",
               "ak_cs_043",
               "ak_cs_050",
               "ak_cs_051",
