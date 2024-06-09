@@ -131,7 +131,7 @@ for(i in 1:length(code_dict$study_area)){
     data_layer <- raw_data %>%
       # reproject the same coordinate reference system (crs) as the study area
       sf::st_transform("ESRI:102008") %>% # EPSG WKID 102008 (https://epsg.io/102008) 
-      # filter for only Afognak Island (ISLAND_NAME) and Womens Bay submerged lands (SUB_UNIT)
+      # filter for only key haulouts (status)
       dplyr::filter(status == "key haulout") %>%
       # obtain data within study area
       sf::st_intersection(hex_by_study) %>%
