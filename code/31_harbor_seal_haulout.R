@@ -138,8 +138,8 @@ for(i in 1:length(code_dict$study_area)){
       return(data_layer)
   }
 
-  # Load Alaska Harbor Seal Haul-out Locations and pass it through the cleaning function above
-  ## source: https://data.axds.co/gs/mariculture/wfs?service=WFS&version=1.0.0&request=GetFeature&outputFormat=SHAPE-ZIP&typeName=mariculture:harbor_seal_haulouts
+  # Load Alaska Harbor Seal Haul-out 500m Buffer and pass it through the cleaning function above
+  ## source: https://data.axds.co/gs/mariculture/wfs?service=WFS&version=1.0.0&request=GetFeature&outputFormat=SHAPE-ZIP&typeName=mariculture:harbor_seal_haulouts_500m_buffer
   ## metadata: https://www.fisheries.noaa.gov/inport/item/26760
   ### data
   read_data <- sf::st_read(dsn = raw_constraints_gpkg, layer = uniqueID) %>% clean_data()
