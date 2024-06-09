@@ -220,7 +220,7 @@ seafood_processing_discharge_loc <- sf::st_read(dsn = file.path(data_dir, "seafo
   
   
 # Alaska DEC Seafood Processing Facilities: AKG5253000 Offshore Seafood Processors	ak_cs_030
-offshore_seafood_processors <- sf::st_read(dsn = file.path(data_dir, "offshore_seafood_processors_line_of_operation/offshore_seafood_processors_line_of_operation.shp"))
+offshore_seafood_processors <- sf::st_read(dsn = file.path(data_dir, "offshore_seafood_processors_permitted_vessels/offshore_seafood_processors_permitted_vessels.shp"))
   
 
 
@@ -344,6 +344,8 @@ OffshoreOilGasPlatform <- sf::st_read(dsn = file.path(data_dir, "OffshoreOilGasP
                                       layer = sf::st_layers(file.path(data_dir, "OffshoreOilGasPlatform/OffshoreOilGasPlatform.gpkg"))[[1]][1])
 
 
+# Alaska Harbor Seal Haul-out 500m Buffers	ak_cs_053
+harbor_seal_haul_buff <- sf::st_read(dsn = file.path(data_dir, "harbor_seal_haulouts_500m_buffer/harbor_seal_haulouts_500m_buffer.shp"))
 
 
 #####################################
@@ -401,7 +403,8 @@ data <- list(dangerzones,
              landstatus_surface_offrefuge,
              ocean_disposal,
              pipelines,
-             OffshoreOilGasPlatform)
+             OffshoreOilGasPlatform,
+             harbor_seal_haul_buff)
 
 #####################################
 # Sanity check, you above list should have 50 variables
