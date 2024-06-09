@@ -246,12 +246,6 @@ Alaska_DEC_WQ_Monitoring_Locations <- sf::st_read(dsn = paste(data_dir, "constra
 
 
 
-# Alaska Harbor Seal Haul-out Locations	ak_cs_037
-harbor_seal_haulouts <- sf::st_read(dsn = paste(data_dir, "constraints.gpkg", sep = "/"),
-                                    layer = sf::st_layers(paste(data_dir, "constraints.gpkg", sep = "/"))[[1]][grep(pattern = "ak_cs_037",
-                                                                                                                    sf::st_layers(dsn = paste(data_dir, "constraints.gpkg", sep = "/"))[[1]])])
-
-
 
 # Steller Sea Lion Haul-out 500m Buffers	ak_cs_038
 steller_sea_lion_haulout_buffers <- sf::st_read(dsn = paste(data_dir, "constraints.gpkg", sep = "/"),
@@ -279,6 +273,9 @@ pipelines <- sf::st_read(dsn = paste(data_dir, "constraints.gpkg", sep = "/"),
 OffshoreOilGasPlatform <- sf::st_read(dsn = paste(data_dir, "constraints.gpkg", sep = "/"),
                                       layer = sf::st_layers(paste(data_dir, "constraints.gpkg", sep = "/"))[[1]][grep(pattern = "ak_cs_052",
                                                                                                                       sf::st_layers(dsn = paste(data_dir, "constraints.gpkg", sep = "/"))[[1]])])
+
+# Alaska Harbor Seal Haul-out 500m Buffers	ak_cs_053
+harbor_seal_haul_buff <- sf::st_read(dsn = file.path(data_dir, "harbor_seal_haulouts_500m_buffer/harbor_seal_haulouts_500m_buffer.shp"))
 
 
 
@@ -319,7 +316,9 @@ data <- list(dangerzones,
              landstatus_boundaries_refuge,
              ocean_disposal,
              pipelines,
-             OffshoreOilGasPlatform)
+             OffshoreOilGasPlatform,
+             harbor_seal_haul_buff)
+
 
 #####################################
 # Sanity check, you above list should have 34 variables
@@ -359,12 +358,14 @@ data_codes <- c("ak_cs_001",
               "ak_cs_034",
               "ak_cs_035",
               "ak_cs_036",
-              "ak_cs_037",
               "ak_cs_038",
               "ak_cs_043",
               "ak_cs_050",
               "ak_cs_051",
-              "ak_cs_052")
+              "ak_cs_052",
+              "ak_cs_053")
+
+
 
 #####################################
 # Sanity check, you above list should have 36 variables
