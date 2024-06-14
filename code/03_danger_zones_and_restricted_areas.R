@@ -104,7 +104,7 @@ code_dict <-list(study_area = c("cordova",
 #####################################
 #####################################
 # This section cleans the data and clips the data to our area of interest. 
-i <- 1
+
 ## use the length of the code_dict "study_area" element to decide how many iterations are needed 
 for(i in 1:length(code_dict$study_area)){
   
