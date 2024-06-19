@@ -1,5 +1,5 @@
 ################################
-### Constraints submodel ###
+### 42. Constraints submodel ###
 ################################
 
 # clear environment
@@ -21,12 +21,13 @@ pacman::p_load(docxtractr, dplyr, elsa, fasterize, fs, ggplot2, janitor, ncf, pa
 
 
 
-# Define the study area lists
-code_dict <- list(
-  study_area = c("cordova", "craig", "juneau", "ketchikan", "kodiak", "metlakatla", "petersburg", "seward", "sitka", "valdez", "wrangell"),
-  code = c("co", "cr", "ju", "ke", "ko", "me", "pe", "se", "si", "va", "wr")
-)
+#################################################
 
+## CHANGE VERSION NUMBER BEFORE RUNNING ##
+
+version_number <- v2
+
+#################################################
 
 #########
 # when running the code for an individual study area:
@@ -34,9 +35,20 @@ code_dict <- list(
 # i = 1 (cordova)
 # run everything below INSIDE the for loop -- do not run the first line
 #########
+
+
+# Define the study area lists
+code_dict <- list(
+  study_area = c("cordova", "craig", "juneau", "ketchikan", "kodiak", "metlakatla", "petersburg", "seward", "sitka", "valdez", "wrangell"),
+  code = c("co", "cr", "ju", "ke", "ko", "me", "pe", "se", "si", "va", "wr")
+)
+
+# define the base directory
 base <- "C:/Users/Eliza.Carter/Documents/Projects/ak_aoa/study_area/study_area/"
 
+
 ### Loop through each study area and code
+
 for (i in seq_along(code_dict$study_area)) {
   study_area <- code_dict$study_area[i]
   code <- code_dict$code[i]
@@ -45,11 +57,9 @@ for (i in seq_along(code_dict$study_area)) {
   study_region_gpkg <- paste0(base, study_area, "/b_intermediate_data/", study_area, "_study_area.gpkg")
   #### constraints
   submodel_gpkg <- paste0(base, study_area, "/c_submodel_data/constraints/constraints.gpkg")
-  ### constraints directory
-  ##constraints_dir <- paste0(submodel_gpkg_base, study_area, "/d_suitability_data/constraints")
   #### suitability
   suitability_dir <- paste0(base, study_area, "/")
-  
+  #### bathymetry path
   bathy_path <- paste0(base, study_area, "/b_intermediate_data/constraints/constraints.gpkg")
   
   
@@ -198,11 +208,11 @@ for (i in seq_along(code_dict$study_area)) {
   
   
   ## export data
-  sf::st_write(obj = suspended, dsn = paste0(suitability_dir, "3_suspended/d_suitability_data/constraints/suitability.gpkg") , layer = paste(region_export_name, submodel_export_name, "sp_suitability", sep = "_"), append = FALSE)
+  sf::st_write(obj = suspended, dsn = paste0(suitability_dir, "3_suspended/d_suitability_data/constraints/suitability.gpkg") , layer = paste(region_export_name, submodel_export_name, "sp_suitability", version_number, sep = "_"), append = FALSE)
   
-  sf::st_write(obj = floating_bag, dsn = paste0(suitability_dir, "2_floating_bag/d_suitability_data/constraints/suitability.gpkg") , layer = paste(region_export_name, submodel_export_name, "fb_suitability", sep = "_"), append = FALSE)
+  sf::st_write(obj = floating_bag, dsn = paste0(suitability_dir, "2_floating_bag/d_suitability_data/constraints/suitability.gpkg") , layer = paste(region_export_name, submodel_export_name, "fb_suitability", version_number, sep = "_"), append = FALSE)
   
-  sf::st_write(obj = intertidal, dsn = paste0(suitability_dir, "1_intertidal/d_suitability_data/constraints/suitability.gpkg") , layer = paste(region_export_name, submodel_export_name, "ib_suitability", sep = "_"), append = FALSE)
+  sf::st_write(obj = intertidal, dsn = paste0(suitability_dir, "1_intertidal/d_suitability_data/constraints/suitability.gpkg") , layer = paste(region_export_name, submodel_export_name, "ib_suitability", version_number, sep = "_"), append = FALSE)
   
 
 }
