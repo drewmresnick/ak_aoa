@@ -3,16 +3,16 @@
 #############################
 
 # create project folder if not already created
-project <- "C:/Users/Breanna.Xiong/Documents/R Scripts/test"
-project_folder <- dir.create(project)
+project <- "C:/Users/Breanna.Xiong/Documents/R Scripts/ak_aoa"
+# project_folder <- dir.create(project)
 
 # create data directory
-data <- "C:/Users/Breanna.Xiong/Documents/R Scripts/test/data"
-data_dir <- dir.create(data)
+data <- "C:/Users/Breanna.Xiong/Documents/R Scripts/ak_aoa/data"
+# data_dir <- dir.create(data)
 
 # create the study area data directory
-study_area <- "C:/Users/Breanna.Xiong/Documents/R Scripts/test/study_area"
-study_area_dir <- dir.create(study_area)
+study_area <- "C:/Users/Breanna.Xiong/Documents/R Scripts/ak_aoa/study_area"
+# study_area_dir <- dir.create(study_area)
 
 ###############################################
 
@@ -22,37 +22,52 @@ data_subdirectories <- c("aa_exploration_data",
 
 # designate study area subdirectories 
 study_area_subdirectories <- c("b_intermediate_data",
-                               "c_submodel_data",
-                               "d_suitability_data",
-                               "e_rank_data",
-                               "f_sensitivity_data",
-                               "g_uncertainty_data",
-                               "zz_miscellaneous")
+                               "c_submodel_data")
+
 
 
 # study area names
 study_area_names <- c("ketchikan",
-                   "cordova",
-                   "craig",
-                   "juneau",
-                   "kodiak",
-                   "metlakatla",
-                   "petersburg",
-                   "seward",
-                   "sitka",
-                   "valdez",
-                   "wrangell")
+                      "cordova",
+                      "craig",
+                      "juneau",
+                      "kodiak",
+                      "metlakatla",
+                      "petersburg",
+                      "seward",
+                      "sitka",
+                      "valdez",
+                      "wrangell")
+
+
+
+# designate scenario subdirectories
+scenario_subdirectories <- c("d_suitability_data",
+                             "e_rank_data",
+                             "f_sensitivity_data",
+                             "g_uncertainty_data",
+                             "zz_miscellaneous")
 
 
 # designate submodel directories
-data_submodels <- c("boundaries",
-                    "constraints",
-                    "geology",
+data_submodels <- c("constraints",
+                    "geophysical",
                     "fisheries",
-                    "industry_navigation",
-                    "logistics",
-                    "natural_cultural_resources",
-                    "national_security")
+                    "natural_resources",
+                    "cultural_resources",
+                    "national_security",
+                    "industry_navigation")
+
+
+# designate scenario directories
+scenarios <- c(
+  "1_intertidal",
+  "2_floating_bag",
+  "3_suspended",
+  "4_baseline",
+  "5_intertidal_wetlands"
+)
+
 
 
 #####################################
@@ -60,16 +75,6 @@ data_submodels <- c("boundaries",
 # create sub-directories within data directory (aa-a)
 for (i in 1:length(data_subdirectories)){
   subdirectories <- dir.create(file.path(data, data_subdirectories[i]))
-}
-
-# create submodel sub-directories within data directory for the exploration data
-for (i in 1:length(data_submodels)){
-  subdirectories <- dir.create(file.path(data, "aa_exploration_data", data_submodels[i]))
-}
-
-# create submodel sub-directories within data directory for the raw data 
-for (i in 1:length(data_submodels)){
-  subdirectories <- dir.create(file.path(data, "a_raw_data", data_submodels[i]))
 }
 
 ######################################
@@ -84,7 +89,7 @@ for(i in study_area_names){
 }
 
 
-# create submodel sub-directories within study area directory for b_intermediate - zz_miscellaneous 
+# create study area sub-directories within study area directory for b_intermediate - c_submodel_data
 for(i in (study_area_names)){
   dataset <- i
   
@@ -96,9 +101,9 @@ for(i in (study_area_names)){
     subdirectories <- dir.create(file.path(filepath, k))
   }
 }
-  
 
-# create sub-directories within study area subdirectories for the different submodels (boundaries - natural cultural resources)
+
+# create submodel directories within study area subdirectories (boundaries - natural cultural resources)
 for(i in (study_area_names)){
   dataset <- i
   
@@ -116,11 +121,92 @@ for(i in (study_area_names)){
   }
 }
 
+#####################################
+# Scenarios 
+# create scenario directories within study area folders (intertidal - baseline)
+for(i in (study_area_names)){
+  dataset <- i
   
+  # create sub-directories based on the study_area list 
+  filepath <- paste(study_area, dataset, sep = "/")
+  
+  # create a new folder within each study area
+  for (k in (scenarios)){
+    subdirectories <- dir.create(file.path(filepath, k))
+  }
+}
+
+
+## create directories within study area subdirectories (d_suitability_data - zz_miscellaneous)
+for(i in (study_area_names)){
+  dataset <- i
+  
+  # create sub-directories based on the study_area list 
+  filepath <- paste(study_area, dataset, sep = "/")
+  
+  # create a new folder within each study area
+  for (k in scenarios){
+    
+    for (j in 1:length(scenario_subdirectories)){
+      folder <- (file.path(k, scenario_subdirectories[j]))
+      
+      # create sub-directories based on the study_area list
+      filepath <- paste(study_area, dataset, folder, sep = "/")
+      
+      # create the new folders
+      subdirectories <- dir.create(file.path(filepath))
+      
+    }
+  }
+}
+
+
+# create submodel directories within d_suitability_data - zz_miscellaneous (boundaries - natural cultural resources)
+for(i in (study_area_names)){
+  dataset <- i
+  
+  # create sub-directories based on the study_area list
+  filepath <- paste(study_area, dataset, sep = "/")
+  
+  # create a new folder within each study area
+  for (k in (scenarios)){
+    subdirectories <- (file.path(filepath, k))
+    
+    # within each of the new folders, create a folder for each submodel
+    for (l in 1:length(scenario_subdirectories)){
+      submodels <- (file.path(subdirectories, scenario_subdirectories[l]))
+      
+      for (j in 1:length(data_submodels)){
+        folder <- (file.path(submodels, data_submodels[j]))
+        print(folder)
+        
+        last_sub <- dir.create(file.path(folder))
+      }
+    }
+  }
+}
+
 #####################################
 
 # create code directory
-code_dir <- dir.create("C:/Users/Breanna.Xiong/Documents/R Scripts/test/code")
+code_dir <- "C:/Users/Breanna.Xiong/Documents/GitHub/ak_aoa/code"
+code_dir_create <- dir.create(code_dir)
+
+# script index
+script_index <- "00"
+
+# submodel folders
+for (i in data_submodels){
+  
+  submodel_script_name <- paste(script_index, i, sep = "_")
+  
+  # create sub-directories based on the submodel list
+  filepath <- paste(code_dir, submodel_script_name, sep = "/")
+  
+  # create code submodel folders
+  subdirectories <- dir.create(file.path(filepath))
+  
+}
 
 #####################################
 
