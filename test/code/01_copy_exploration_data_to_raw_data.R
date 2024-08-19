@@ -55,12 +55,12 @@ submodel <- "cs"
 
 ## input data 
 ### exploratory constraints geopackage dire
-data_dir <- "C:/Users/Breanna.Xiong/Documents/R Scripts/ak_aoa/data/aa_exploration_data/constraints"
+data_dir <- "data/aa_exploration_data/constraints"
 
 
 ## output directory
 ### constraints submodel geopackage (raw data)
-raw_constraints_geopackage <- "C:/Users/Breanna.Xiong/Documents/R Scripts/ak_aoa/data/a_raw_data/constraints/constraints.gpkg"
+raw_constraints_geopackage <- "data/a_raw_data/constraints/constraints.gpkg"
 
 #####################################
 #####################################
