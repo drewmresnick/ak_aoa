@@ -60,15 +60,15 @@ data_dir <- "data/aa_exploration_data/constraints"
 
 ## output directory
 ### constraints submodel geopackage (raw data)
-raw_constraints_geopackage <- "C:/Users/Breanna.Xiong/Documents/R Scripts/ak_aoa/data/a_raw_data/constraints/constraints.gpkg"
+raw_constraints_geopackage <- "data/a_raw_data/constraints/constraints.gpkg"
 
 #####################################
 #####################################
 
 # Danger Zones and Restricted Areas ak_cs_001
 dangerzones <- sf::st_read(dsn = paste(data_dir, "constraints.gpkg", sep = "/"),
-                              layer = sf::st_layers(paste(data_dir, "constraints.gpkg", sep = "/"))[[1]][grep(pattern = "ak_cs_001",
-                                                                        sf::st_layers(dsn = paste(data_dir, "constraints.gpkg", sep = "/"))[[1]])])
+                           layer = sf::st_layers(paste(data_dir, "constraints.gpkg", sep = "/"))[[1]][grep(pattern = "ak_cs_001",
+                                                                                                           sf::st_layers(dsn = paste(data_dir, "constraints.gpkg", sep = "/"))[[1]])])
 
 
 # Aids to Navigation ak_cs_002
@@ -86,8 +86,8 @@ wrecksobs <- sf::st_read(dsn = paste(data_dir, "constraints.gpkg", sep = "/"),
 
 # Deep Sea Coral Observations ak_cs_004
 deepseacoral <- sf::st_read(dsn = paste(data_dir, "constraints.gpkg", sep = "/"),
-                           layer = sf::st_layers(paste(data_dir, "constraints.gpkg", sep = "/"))[[1]][grep(pattern = "ak_cs_004",
-                                                                                                           sf::st_layers(dsn = paste(data_dir, "constraints.gpkg", sep = "/"))[[1]])])
+                            layer = sf::st_layers(paste(data_dir, "constraints.gpkg", sep = "/"))[[1]][grep(pattern = "ak_cs_004",
+                                                                                                            sf::st_layers(dsn = paste(data_dir, "constraints.gpkg", sep = "/"))[[1]])])
 
 
 
@@ -133,8 +133,8 @@ munitions <- sf::st_read(dsn = paste(data_dir, "constraints.gpkg", sep = "/"),
 
 # Wastewater Outfalls: Wastewater Outfall Pipes	ak_cs_015
 wastewater_pipe <- sf::st_read(dsn = paste(data_dir, "constraints.gpkg", sep = "/"),
-                              layer = sf::st_layers(paste(data_dir, "constraints.gpkg", sep = "/"))[[1]][grep(pattern = "ak_cs_015",
-                                                                                                              sf::st_layers(dsn = paste(data_dir, "constraints.gpkg", sep = "/"))[[1]])])
+                               layer = sf::st_layers(paste(data_dir, "constraints.gpkg", sep = "/"))[[1]][grep(pattern = "ak_cs_015",
+                                                                                                               sf::st_layers(dsn = paste(data_dir, "constraints.gpkg", sep = "/"))[[1]])])
 
 
 # Ferry Terminals	ak_cs_016
@@ -294,7 +294,50 @@ OffshoreOilGasPlatform <- sf::st_read(dsn = paste(data_dir, "constraints.gpkg", 
 harbor_seal_haul_buff <- sf::st_read(dsn = file.path(data_dir, "harbor_seal_haulouts_500m_buffer/harbor_seal_haulouts_500m_buffer.shp"))
 
 
+# added later on, raw processed by Isaac K. and further processed by Eliza C.
+# Bathymetry: Cordova	ak_cs_054
+bathy_cordova <- sf::st_read(dsn = paste(data_dir, "constraints.gpkg", sep = "/"), layer = "ak_cs_054")
 
+
+
+# Bathymetry: Craig	ak_cs_055
+bathy_craig <- sf::st_read(dsn = file.path("C:/Users/Breanna.Xiong/Documents/R Scripts/ak_aoa/data/a_raw_data/extracted_bathymetry_hex_grids_scenarios.gpkg"), layer = "fiveacreCraig_Tess_Final")
+
+# Bathymetry: Juneau	ak_cs_056
+bathy_juneau <- sf::st_read(dsn = file.path("C:/Users/Breanna.Xiong/Documents/R Scripts/ak_aoa/data/a_raw_data/extracted_bathymetry_hex_grids_scenarios.gpkg"), layer = "fiveacreJuneau_Tess_Final")
+
+# Bathymetry: Ketchikan	ak_cs_057
+bathy_ketchikan <- sf::st_read(dsn = file.path("C:/Users/Breanna.Xiong/Documents/R Scripts/ak_aoa/data/a_raw_data/extracted_bathymetry_hex_grids_scenarios.gpkg"), layer = "fiveacre_Ketchikan_Tess_Final")
+
+# Bathymetry: Kodiak	ak_cs_058
+bathy_kodiak <- sf::st_read(dsn = file.path("C:/Users/Breanna.Xiong/Documents/R Scripts/ak_aoa/data/a_raw_data/extracted_bathymetry_hex_grids_scenarios.gpkg"), layer = "fiveacreKodiak_Tess_Final")
+
+
+# Bathymetry: Metlakatla	ak_cs_059
+bathy_metlakatla <- sf::st_read(dsn = file.path("C:/Users/Breanna.Xiong/Documents/R Scripts/ak_aoa/data/a_raw_data/extracted_bathymetry_hex_grids_scenarios.gpkg"), layer = "fiveacreMetlakatla_Tess_Final")
+
+
+# Bathymetry: Petersburg	ak_cs_060
+bathy_petersburg <- sf::st_read(dsn = file.path("C:/Users/Breanna.Xiong/Documents/R Scripts/ak_aoa/data/a_raw_data/extracted_bathymetry_hex_grids_scenarios.gpkg"), layer = "fiveacrePetersburg_Tess_Final")
+
+
+# Bathymetry: Seward	ak_cs_061
+bathy_seward <- sf::st_read(dsn = file.path("C:/Users/Breanna.Xiong/Documents/R Scripts/ak_aoa/data/a_raw_data/extracted_bathymetry_hex_grids_scenarios.gpkg"), layer = "fiveacreSeward_Tess_Final")
+
+
+# Bathymetry: Sitka	ak_cs_062
+bathy_sitka <- sf::st_read(dsn = file.path("C:/Users/Breanna.Xiong/Documents/R Scripts/ak_aoa/data/a_raw_data/extracted_bathymetry_hex_grids_scenarios.gpkg"), layer = "fiveacreSitka_Tess_Final")
+
+
+# Bathymetry: Valdez	ak_cs_063
+bathy_valdez <- sf::st_read(dsn = file.path("C:/Users/Breanna.Xiong/Documents/R Scripts/ak_aoa/data/a_raw_data/extracted_bathymetry_hex_grids_scenarios.gpkg"), layer = "fiveacreValdez_Tess_Final")
+
+# Bathymetry: Wrangell 	ak_cs_064
+bathy_wrangell <- sf::st_read(dsn = file.path("C:/Users/Breanna.Xiong/Documents/R Scripts/ak_aoa/data/a_raw_data/extracted_bathymetry_hex_grids_scenarios.gpkg"), layer = "fiveacreWrangell_Tess_Final")
+
+
+# Anchorages	ak_cs_065
+anchor <- sf::st_read(dsn = file.path(data_dir, "Anchorage/Anchorage.gpkg"))
 #####################################
 #####################################
 
@@ -339,7 +382,7 @@ data <- list(dangerzones,
 
 
 #####################################
-# Sanity check, you above list should have 34 variables
+# Sanity check, you above list should match the number of variables you have
 length(data)
 
 
@@ -348,42 +391,55 @@ length(data)
 
 # list out the corresponding codes so that we can rename them in the geopackage
 
-data_codes <- c("ak_cs_001",
-              "ak_cs_002",
-              "ak_cs_003",
-              "ak_cs_004",
-              "ak_cs_005",
-              "ak_cs_006",
-              "ak_cs_007",
-              "ak_cs_008",
-              "ak_cs_009",
-              "ak_cs_010",
-              "ak_cs_012",
-              "ak_cs_015",
-              "ak_cs_016",
-              "ak_cs_017",
-              "ak_cs_018",
-              "ak_cs_019",
-              "ak_cs_024",
-              "ak_cs_025",
-              "ak_cs_026",
-              "ak_cs_027",
-              "ak_cs_029",
-              "ak_cs_030",
-              "ak_cs_031",
-              "ak_cs_032",
-              "ak_cs_033",
-              "ak_cs_034",
-              "ak_cs_035",
-              "ak_cs_036",
-              "ak_cs_038",
-              "ak_cs_041",
-              "ak_cs_042",
-              "ak_cs_043",
-              "ak_cs_050",
-              "ak_cs_051",
-              "ak_cs_052",
-              "ak_cs_053")
+data_codes <- c(
+              # "ak_cs_001",
+              # "ak_cs_002",
+              # "ak_cs_003",
+              # "ak_cs_004",
+              # "ak_cs_005",
+              # "ak_cs_006",
+              # "ak_cs_007",
+              # "ak_cs_008",
+              # "ak_cs_009",
+              # "ak_cs_010",
+              # "ak_cs_012",
+              # "ak_cs_015",
+              # "ak_cs_016",
+              # "ak_cs_017",
+              # "ak_cs_018",
+              # "ak_cs_019",
+              # "ak_cs_024",
+              # "ak_cs_025",
+              # "ak_cs_026",
+              # "ak_cs_027",
+              # "ak_cs_029",
+              # "ak_cs_030",
+              # "ak_cs_031",
+              # "ak_cs_032",
+              # "ak_cs_033",
+              # "ak_cs_034",
+              # "ak_cs_035",
+              # "ak_cs_036",
+              # "ak_cs_038",
+              # "ak_cs_041",
+              # "ak_cs_042",
+              # "ak_cs_043",
+              # "ak_cs_050",
+              # "ak_cs_051",
+              # "ak_cs_052",
+              # "ak_cs_053",
+              "ak_cs_054",
+              "ak_cs_055",
+              "ak_cs_056",
+              "ak_cs_057",
+              "ak_cs_058",
+              "ak_cs_059",
+              "ak_cs_060",
+              "ak_cs_061",
+              "ak_cs_062",
+              "ak_cs_063",
+              "ak_cs_064",
+              "ak_cs_065")
 
 
 
