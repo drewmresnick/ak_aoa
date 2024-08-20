@@ -72,49 +72,49 @@ data_download_function <- function(download_list, data_dir){
                     destfile = file.path(data_dir, file),
                     mode="wb")
     }
+    
+    # unzip and prepare data hosted on AXDS's servers
+    ## take the parts with "typeName" in the file and then get unique data name 
+    if (grepl("typeName", file)){
       
-      # unzip and prepare data hosted on AXDS's servers
-      ## take the parts with "typeName" in the file and then get unique data name 
-      if (grepl("typeName", file)){
-        
-        # grab unique file name portion
-        new_dir_name <- unlist(strsplit(file, split=':', fixed=TRUE))[2]
-        
-        # create new directory for data
-        new_dir <- file.path(data_dir, new_dir_name)
-        
-        # unzip the file
-        unzip(zipfile = file.path(data_dir, file),
-              # export file to the new data directory
-              exdir = new_dir)
-        # remove original zipped file
-        file.remove(file.path(data_dir, file))
-      }
+      # grab unique file name portion
+      new_dir_name <- unlist(strsplit(file, split=':', fixed=TRUE))[2]
       
-      # Unzip the file if the data are compressed as .zip
-      ## Examine if the filename contains the pattern ".zip"
-      ### grepl returns a logic statement when pattern ".zip" is met in the file
-      if (grepl(".zip", file)){
-        
-        # grab text before ".zip" and keep only text before that
-        new_dir_name <- sub(".zip", "", file)
-        
-        # create new directory for data
-        new_dir <- file.path(data_dir, new_dir_name)
-        
-        # unzip the file
-        unzip(zipfile = file.path(data_dir, file),
-              # export file to the new data directory
-              exdir = new_dir)
-        # remove original zipped file
-        file.remove(file.path(data_dir, file))
-      }
+      # create new directory for data
+      new_dir <- file.path(data_dir, new_dir_name)
+      
+      # unzip the file
+      unzip(zipfile = file.path(data_dir, file),
+            # export file to the new data directory
+            exdir = new_dir)
+      # remove original zipped file
+      file.remove(file.path(data_dir, file))
+    }
+    
+    # Unzip the file if the data are compressed as .zip
+    ## Examine if the filename contains the pattern ".zip"
+    ### grepl returns a logic statement when pattern ".zip" is met in the file
+    if (grepl(".zip", file)){
+      
+      # grab text before ".zip" and keep only text before that
+      new_dir_name <- sub(".zip", "", file)
+      
+      # create new directory for data
+      new_dir <- file.path(data_dir, new_dir_name)
+      
+      # unzip the file
+      unzip(zipfile = file.path(data_dir, file),
+            # export file to the new data directory
+            exdir = new_dir)
+      # remove original zipped file
+      file.remove(file.path(data_dir, file))
     }
   }
+}
 
 #####################################
 #####################################
-    
+
 # set directories
 ## define data directory (as this is an R Project, pathnames are simplified)
 data_dir <- "C:/Users/Breanna.Xiong/Documents/R Scripts/ak_aoa/data/aa_exploration_data/constraints"
@@ -132,7 +132,7 @@ download_list <- c(
   "https://marinecadastre.gov/downloads/data/mc/WreckObstruction.zip",
   "https://marinecadastre.gov/downloads/data/mc/CoastalPopulatedPlace.zip",
   "https://marinecadastre.gov/downloads/data/mc/FederalStateWaters.zip",
-
+  
   "https://marinecadastre.gov/downloads/data/mc/SubmarineCable.zip",
   "https://marinecadastre.gov/downloads/data/mc/SubmarineCableArea.zip",
   
@@ -147,24 +147,25 @@ download_list <- c(
   "https://marinecadastre.gov/downloads/data/mc/UnexplodedOrdnanceArea.zip",
   "https://marinecadastre.gov/downloads/data/mc/UnexplodedOrdnance.zip",
   "https://marinecadastre.gov/downloads/data/mc/WastewaterOutfall.zip",
-
+  
   "https://data.axds.co/gs/mariculture/wfs?service=WFS&version=1.0.0&request=GetFeature&outputFormat=SHAPE-ZIP&typeName=mariculture:active_aquatic_farming_operation_areas",
   "https://www.adfg.alaska.gov/static-sf/AWC/GDB/2023GDB_statewide.zip",
-
+  
   "https://data.axds.co/gs/nfwf/wfs?service=WFS&version=1.0.0&request=GetFeature&outputFormat=SHAPE-ZIP&typeName=nfwf:ci_fiberoptic",
   "https://data.axds.co/gs/nfwf/wfs?service=WFS&version=1.0.0&request=GetFeature&outputFormat=SHAPE-ZIP&typeName=nfwf:ci_pipes",
-
+  
   "https://data.axds.co/gs/walrus/wfs?service=WFS&version=1.0.0&request=GetFeature&outputFormat=SHAPE-ZIP&typeName=walrus:hauloutsdb_buffer_3338_4326",
-
+  
   "https://data.axds.co/gs/mariculture/wfs?service=WFS&version=1.0.0&request=GetFeature&outputFormat=SHAPE-ZIP&typeName=mariculture:harbor_seal_haulouts_500m_buffer",
   "https://data.axds.co/gs/mariculture/wfs?service=WFS&version=1.0.0&request=GetFeature&outputFormat=SHAPE-ZIP&typeName=mariculture:harbor_seal_haulouts",
   "https://data.axds.co/gs/mariculture/wfs?service=WFS&version=1.0.0&request=GetFeature&outputFormat=SHAPE-ZIP&typeName=mariculture:steller_sea_lion_haulout_buffers",
-
+  
   "https://www.fws.gov/r7/nwr/Realty/data/GIS/Land-Status/USFWS-Region-7-Land-Status.gdb.zip",
   
   "https://marinecadastre.gov/downloads/data/mc/OceanDisposalSite.zip",
   "https://marinecadastre.gov/downloads/data/mc/Pipeline.zip",
-  "https://marinecadastre.gov/downloads/data/mc/OffshoreOilGasPlatform.zip"
+  "https://marinecadastre.gov/downloads/data/mc/OffshoreOilGasPlatform.zip",
+  "https://marinecadastre.gov/downloads/data/mc/Anchorage.zip"
 )
 
 #####################################
