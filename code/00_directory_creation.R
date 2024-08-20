@@ -41,6 +41,7 @@ study_area_names <- c("ketchikan",
 
 
 
+
 # designate scenario subdirectories
 scenario_subdirectories <- c("d_suitability_data",
                              "e_rank_data",
