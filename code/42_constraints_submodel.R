@@ -122,7 +122,7 @@ for (i in seq_along(code_dict$study_area)) {
   
   ## create an empty list to store the output 
   data_layers <- list()
-
+  
   ## Loop through each data layer to load them into R
   for (j in seq_along(layer_name)) {
     layer_nm <- layer_name[j]
@@ -180,7 +180,7 @@ for (i in seq_along(code_dict$study_area)) {
     dplyr::group_by_at(vars(GRID_ID, group_by_columns)) %>% # group by GRID_ID and constraint layers
     dplyr::distinct()
   
-
+  
   ## function to create the constraints column
   create_constraints_column <- function(data) {
     # Check for 0s in each row across all columns except excluded ones
@@ -190,7 +190,7 @@ for (i in seq_along(code_dict$study_area)) {
     return(constraints)
   }
   
-
+  
   ## create the scenarios
   suspended <- study_area_constraints %>%
     dplyr::select(-depth_range_floating, -depth_range_intertidal) 
@@ -214,6 +214,5 @@ for (i in seq_along(code_dict$study_area)) {
   
   sf::st_write(obj = intertidal, dsn = paste0(suitability_dir, "1_intertidal/d_suitability_data/constraints/suitability.gpkg") , layer = paste(region_export_name, submodel_export_name, "ib_suitability", version_number, sep = "_"), append = FALSE)
   
-
+  
 }
-
