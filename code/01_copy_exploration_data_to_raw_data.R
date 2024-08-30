@@ -55,12 +55,12 @@ submodel <- "cs"
 
 ## input data 
 ### exploratory constraints geopackage dire
-data_dir <- "data/aa_exploration_data/constraints"
+data_dir <- "C:/Users/Breanna.Xiong/Documents/R Scripts/ak_aoa/data/aa_exploration_data/constraints"
 
 
 ## output directory
 ### constraints submodel geopackage (raw data)
-raw_constraints_geopackage <- "data/a_raw_data/constraints/constraints.gpkg"
+raw_constraints_geopackage <- "C:/Users/Breanna.Xiong/Documents/R Scripts/ak_aoa/data/a_raw_data/constraints/constraints.gpkg"
 
 #####################################
 #####################################
@@ -338,47 +338,67 @@ bathy_wrangell <- sf::st_read(dsn = file.path("C:/Users/Breanna.Xiong/Documents/
 
 # Anchorages	ak_cs_065
 anchor <- sf::st_read(dsn = file.path(data_dir, "Anchorage/Anchorage.gpkg"))
+
+
+# Area Plan Management Units - No Aquaculture	ak_cs_066
+area_plan <- sf::st_read(dsn = paste(data_dir, "constraints.gpkg", sep = "/"), layer = "ak_cs_066")
+
+
 #####################################
 #####################################
 
 # create list of the datasets
-data <- list(dangerzones,
-             aton,
-             wrecksobs,
-             deepseacoral,
-             submarine,
-             submarineareas,
-             sensors,
-             shippinglane,
-             marine_highway,
-             maintainedchannels,
-             munitions,
-             wastewater_pipe,
-             ferry_terminals,
-             ferry_routes,
-             aquatic_farm_permit,
-             active_aquatic_op,
-             awc_stream,
-             state_park,
-             refuge_crithab_sanct,
-             ci_fiberoptic,
-             seafood_processing_discharge_loc,
-             offshore_seafood_processors,
-             seafood_processing_permitted_outfall,
-             seafood_processing_permitted_net_pens,
-             seafood_processing_permitted_carcass_disposal,
-             seafood_processing_facility_locations,
-             walrus_haulouts,
-             Alaska_DEC_WQ_Monitoring_Locations,
-             harbor_seal_haulouts,
-             steller_sea_lion_haulout_buffers,
-             poa_navigation_projects,
-             poa_erosion_protection,
-             landstatus_boundaries_refuge,
-             ocean_disposal,
-             pipelines,
-             OffshoreOilGasPlatform,
-             harbor_seal_haul_buff)
+data <- list(
+             # dangerzones,
+             # aton,
+             # wrecksobs,
+             # deepseacoral,
+             # submarine,
+             # submarineareas,
+             # sensors,
+             # shippinglane,
+             # marine_highway,
+             # maintainedchannels,
+             # munitions,
+             # wastewater_pipe,
+             # ferry_terminals,
+             # ferry_routes,
+             # aquatic_farm_permit,
+             # active_aquatic_op,
+             # awc_stream,
+             # state_park,
+             # refuge_crithab_sanct,
+             # ci_fiberoptic,
+             # seafood_processing_discharge_loc,
+             # offshore_seafood_processors,
+             # seafood_processing_permitted_outfall,
+             # seafood_processing_permitted_net_pens,
+             # seafood_processing_permitted_carcass_disposal,
+             # seafood_processing_facility_locations,
+             # walrus_haulouts,
+             # Alaska_DEC_WQ_Monitoring_Locations,
+             # harbor_seal_haulouts,
+             # steller_sea_lion_haulout_buffers,
+             # poa_navigation_projects,
+             # poa_erosion_protection,
+             # landstatus_boundaries_refuge,
+             # ocean_disposal,
+             # pipelines,
+             # OffshoreOilGasPlatform,
+             # harbor_seal_haul_buff,
+             # bathy_cordova,
+             # bathy_craig,
+             # bathy_juneau,
+             # bathy_ketchikan,
+             # bathy_kodiak,
+             # bathy_metlakatla,
+             # bathy_petersburg,
+             # bathy_seward,
+             # bathy_sitka,
+             # bathy_valdez,
+             # bathy_wrangell,
+             # anchor,
+             area_plan)
 
 
 #####################################
@@ -428,23 +448,24 @@ data_codes <- c(
               # "ak_cs_051",
               # "ak_cs_052",
               # "ak_cs_053",
-              "ak_cs_054",
-              "ak_cs_055",
-              "ak_cs_056",
-              "ak_cs_057",
-              "ak_cs_058",
-              "ak_cs_059",
-              "ak_cs_060",
-              "ak_cs_061",
-              "ak_cs_062",
-              "ak_cs_063",
-              "ak_cs_064",
-              "ak_cs_065")
+              # "ak_cs_054",
+              # "ak_cs_055",
+              # "ak_cs_056",
+              # "ak_cs_057",
+              # "ak_cs_058",
+              # "ak_cs_059",
+              # "ak_cs_060",
+              # "ak_cs_061",
+              # "ak_cs_062",
+              # "ak_cs_063",
+              # "ak_cs_064",
+              # "ak_cs_065",
+              "ak_cs_066")
 
 
 
 #####################################
-# Sanity check, you above list should have 36 variables
+# Sanity check, you above list
 length(data_codes)
 
 #####################################
@@ -460,6 +481,5 @@ for(i in seq_along(data)){
 
 #####################################
 #####################################
-
 # calculate end time and print time difference
 print(Sys.time() - start) # print how long it takes to calculate
