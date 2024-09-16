@@ -93,10 +93,10 @@ for(i in 1:length(code_dict$study_area)){
   
   # Suitability Geopackage
   # Define the output suitability GeoPackage path
-  suitability_output_gpkg <- file.path("C:/Users/Breanna.Xiong/Documents/R Scripts/ak_aoa/study_area", code_dict$study_area[i], "1_intertidal/d_suitability_data/constraints/constraints_suitability.gpkg")
+  suitability_output_gpkg <- file.path("C:/Users/Breanna.Xiong/Documents/R Scripts/ak_aoa/study_area", code_dict$study_area[i], "1_intertidal/d_suitability_data/constraints/constraints_suitability_iw.gpkg")
   
   # Create the new layer name based on the study area
-  new_layer_name <- paste("ak", code_dict$code[i], "unconstrained_intertidal", sep = "_")
+  new_layer_name <- paste("ak", code_dict$code[i], "cs_iw_unconstrained", sep = "_")
   
   # Write the layer to the submodel output GeoPackage
   sf::st_write(obj = data, dsn = suitability_output_gpkg, layer = new_layer_name, append = FALSE)
