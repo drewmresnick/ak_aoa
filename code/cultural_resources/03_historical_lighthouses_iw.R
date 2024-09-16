@@ -70,6 +70,12 @@ submodel <- "cr"
 ## Input the unique ID for the raw data
 uniqueID <- "ak_cr_001"
 
+## Input scenario abbreviation
+scenario_abbrv <- "iw"
+
+## Input scenario name
+scenario_name <- "intertidal"
+
 #####################################
 #####################################
 # Create a dictionary for the different study areas and study area codes 
@@ -125,7 +131,7 @@ for(i in 1:length(code_dict$study_area)){
     hex_path <- file.path(study_area_dir, code_dict$study_area[i], "1_intertidal/d_suitability_data/constraints/constraints_suitability_iw.gpkg")
     
     # layer 
-    layer = paste("ak", code_dict$code[i], "cs_iw_unconstrained", sep = "_")
+    layer = paste("ak", code_dict$code[i], "cs", scenario_abbrv, "unconstrained", sep = "_")
     
     ## for each item in the code_dict list, search the study area geopackage for the dataset layer corresponding to that item
     hex_by_study <- sf::st_read(dsn = hex_path, layer = layer)
@@ -152,12 +158,11 @@ for(i in 1:length(code_dict$study_area)){
     id <- strsplit(uniqueID, "_(?!.*_)", perl=TRUE)[[1]]
     
     # create a new unique code that's specific to the study area, not just the region
-    out_code <- paste(region, dict_code, submodel, id[2], sep="_")
-    
+    out_code <- paste(region, dict_code, submodel, id[2], scenario_abbrv, sep="_")
     
     # Export data
     ## intermediate geopackage directory
-    intermediate_gpkg <- paste(study_area_dir, dict_study, "b_intermediate_data/cultural_resources/cultural_resources.gpkg", sep = "/")
+    intermediate_gpkg <- paste(study_area_dir, dict_study, "b_intermediate_data/cultural_resources/cultural_resources_iw.gpkg", sep = "/")
     
     
     ## run the export tool
@@ -187,7 +192,7 @@ for(i in 1:length(code_dict$study_area)){
     hex_read_data <- region_data_hex_function(region_hex, read_data)
     
     # submodel geopackage directory
-    submodel_gpkg <- paste(study_area_dir, dict_study, "c_submodel_data/cultural_resources/cultural_resources.gpkg", sep = "/")
+    submodel_gpkg <- paste(study_area_dir, dict_study, "c_submodel_data/cultural_resources/cultural_resources_iw.gpkg", sep = "/")
     
     # run the export tool
     sf::st_write(obj = hex_read_data, dsn = submodel_gpkg, out_code , append = F)
@@ -195,7 +200,6 @@ for(i in 1:length(code_dict$study_area)){
     # Error catching  
   }, error=function(e){cat("ERROR :",conditionMessage(e), "\n")})
 }
-
 
 #####################################
 #####################################
