@@ -1,6 +1,6 @@
-############################################## 
-### 1. Historic Lighthouses	ak_cr_001      ###
-############################################## 
+############################################################### 
+### 3. Historic Lighthouses	ak_cr_001 intertidal wetland    ###
+############################################################### 
 
 
 # clear environment
@@ -144,7 +144,6 @@ for(i in 1:length(code_dict$study_area)){
     
     # Load historical lighthouse and pass it through the cleaning function above
     ## source: https://marinecadastre.gov/downloads/data/mc/DangerZoneRestrictedArea.zip
-    ## mapServer: https://coast.noaa.gov/arcgis/rest/services/OceanReports/DangerZonesAndRestrictedAreas/MapServer/0/metadata
     ### data
     read_data <- sf::st_read(dsn = raw_cultural_geopackage, layer = uniqueID) %>% clean_data
     
