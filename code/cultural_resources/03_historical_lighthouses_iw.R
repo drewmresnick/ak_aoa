@@ -104,7 +104,7 @@ code_dict <-list(study_area = c("cordova",
 #####################################
 #####################################
 # This section cleans the data and clips the data to our area of interest. 
-i <- 6
+
 ## use the length of the code_dict "study_area" element to decide how many iterations are needed 
 for(i in 1:length(code_dict$study_area)){
   
@@ -122,10 +122,10 @@ for(i in 1:length(code_dict$study_area)){
     ## it's essential to read out the full name to avoid selecting the incorrect one.
     
     ## path to the dissolved hex grids that were derived from constraints outputs
-    hex_path <- file.path(study_area_dir, code_dict$study_area[i], "2_floating_bag/d_suitability_data/constraints/constraints_suitability_fb.gpkg")
+    hex_path <- file.path(study_area_dir, code_dict$study_area[i], "1_intertidal/d_suitability_data/constraints/constraints_suitability_iw.gpkg")
     
     # layer 
-    layer = paste("ak", code_dict$code[i], "cs_fb_unconstrained", sep = "_")
+    layer = paste("ak", code_dict$code[i], "cs_iw_unconstrained", sep = "_")
     
     ## for each item in the code_dict list, search the study area geopackage for the dataset layer corresponding to that item
     hex_by_study <- sf::st_read(dsn = hex_path, layer = layer)
