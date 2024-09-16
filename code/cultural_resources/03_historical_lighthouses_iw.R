@@ -73,9 +73,6 @@ uniqueID <- "ak_cr_001"
 ## Input scenario abbreviation
 scenario_abbrv <- "iw"
 
-## Input scenario name
-scenario_name <- "intertidal"
-
 #####################################
 #####################################
 # Create a dictionary for the different study areas and study area codes 
