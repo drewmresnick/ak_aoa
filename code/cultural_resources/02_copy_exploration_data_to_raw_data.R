@@ -68,6 +68,41 @@ raw_cultural_geopackage <- "C:/Users/Breanna.Xiong/Documents/R Scripts/ak_aoa/da
 # Historic Lighthouses	ak_cr_001
 lighthouse <- sf::st_read(dsn = paste(data_dir, "cultural_resources.gpkg", sep = "/"), layer = "ak_cr_001")
 
+# Federally recognized Tribes	ak_cr_002
+tribes <- sf::st_read(dsn = paste(data_dir, "cultural_resources.gpkg", sep = "/"), layer = "ak_cr_002")
+
+
+# Subsistence harvest non fisheries resources	ak_cr_003
+subnonfish <- sf::st_read(dsn = paste(data_dir, "cultural_resources.gpkg", sep = "/"), layer = "ak_cr_003")
+
+
+# Subsistence Harvest Fisheries Resources	ak_cr_004
+subfish <- sf::st_read(dsn = paste(data_dir, "cultural_resources.gpkg", sep = "/"), layer = "ak_cr_004")
+
+
+# Community Culture and History	ak_cr_005
+communityhistory <- sf::st_read(dsn = paste(data_dir, "cultural_resources.gpkg", sep = "/"), layer = "ak_cr_005")
+
+
+# Harbors	ak_cr_006
+harbors <- sf::st_read(dsn = paste(data_dir, "cultural_resources.gpkg", sep = "/"), layer = "ak_cr_006")
+
+
+# Bear concentration areas	ak_cr_007
+bears <- sf::st_read(dsn = paste(data_dir, "cultural_resources.gpkg", sep = "/"), layer = "ak_cr_007")
+
+
+# Land permit or lease - polygon	ak_cr_008
+land_permit <- sf::st_read(dsn = paste(data_dir, "cultural_resources.gpkg", sep = "/"), layer = "ak_cr_008")
+
+
+# Alaska National Parks, Preserves, Monuments	ak_cr_009
+np_pres_monu <- sf::st_read(dsn = paste(data_dir, "cultural_resources.gpkg", sep = "/"), layer = "ak_cr_009")
+
+
+# Shore Fishery Lease	ak_cr_010
+shore_fishery_lease <- sf::st_read(dsn = paste(data_dir, "cultural_resources.gpkg", sep = "/"), layer = "ak_cr_010")
+
 
 
 
@@ -75,13 +110,21 @@ lighthouse <- sf::st_read(dsn = paste(data_dir, "cultural_resources.gpkg", sep =
 #####################################
 
 # create list of the datasets
-data <- list(
-  lighthouse
-)
+data <- list(lighthouse,
+            tribes,
+            subnonfish,
+            subfish,
+            communityhistory,
+            harbors,
+            bears,
+            land_permit,
+            np_pres_monu,
+            shore_fishery_lease
+          )
 
 
 #####################################
-# Sanity check, you above list should have 34 variables
+# Sanity check, you above list should have 10 variables
 length(data)
 
 
@@ -90,12 +133,21 @@ length(data)
 
 # list out the corresponding codes so that we can rename them in the geopackage
 
-data_codes <- c("ak_cr_001")
+data_codes <- c("ak_cr_001",
+                "ak_cr_002",
+                "ak_cr_003",
+                "ak_cr_004",
+                "ak_cr_005",
+                "ak_cr_006",
+                "ak_cr_007",
+                "ak_cr_008",
+                "ak_cr_009",
+                "ak_cr_010")
 
 
 
 #####################################
-# Sanity check, you above list should have 36 variables
+# Sanity check, you above list should have 10 variables
 length(data_codes)
 
 #####################################
