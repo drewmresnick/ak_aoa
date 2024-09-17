@@ -93,7 +93,7 @@ for(i in 1:length(code_dict$study_area)){
   
   # Suitability Geopackage
   # Define the output suitability GeoPackage path
-  suitability_output_gpkg <- file.path("C:/Users/Breanna.Xiong/Documents/R Scripts/ak_aoa/study_area", code_dict$study_area[i], "1_intertidal/d_suitability_data/constraints/constraints_suitability_iw.gpkg")
+  suitability_output_gpkg <- file.path("C:/Users/Breanna.Xiong/Documents/R Scripts/ak_aoa/study_area", code_dict$study_area[i], "5_intertidal_wetlands/d_suitability_data/constraints/constraints_suitability_iw.gpkg")
   
   # Create the new layer name based on the study area
   new_layer_name <- paste("ak", code_dict$code[i], "cs_iw_unconstrained", sep = "_")
@@ -101,4 +101,16 @@ for(i in 1:length(code_dict$study_area)){
   # Write the layer to the submodel output GeoPackage
   sf::st_write(obj = data, dsn = suitability_output_gpkg, layer = new_layer_name, append = FALSE)
 
+}
+
+#######################################
+#######################################
+# Delete Valdez, empty result since there were no unconstrained intertidal hexes 
+#Define the file name that will be deleted
+fn <- ("C:/Users/Breanna.Xiong/Documents/R Scripts/ak_aoa/study_area/valdez/5_intertidal_wetlands/d_suitability_data/constraints/constraints_suitability_iw.gpkg")
+
+#Check its existence
+if (file.exists(fn)) {
+  #Delete file if it exists
+  file.remove(fn)
 }
