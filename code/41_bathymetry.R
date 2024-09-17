@@ -20,7 +20,7 @@ pacman::p_load(docxtractr, dplyr, elsa, fasterize, fs, ggplot2, janitor, ncf, pa
 #####################################
 
 
-bathymetry_path <- "C:/Users/Breanna.Xiong/Documents/R Scripts/ak_aoa/data/aa_exploration_data/extracted_bathymetry_hex_grids.gpkg"
+bathymetry_path <- "C:/Users/Breanna.Xiong/Documents/R Scripts/ak_aoa/data/a_raw_data/extracted_bathymetry_hex_grids.gpkg"
 output_base_path <- "C:/Users/Breanna.Xiong/Documents/R Scripts/ak_aoa/study_area"
 
 
@@ -33,7 +33,6 @@ code_dict <- list(
 
 study_area_layers <- sf::st_layers(bathymetry_path)$name
 
-layer <- "fiveacreCraig_Tess_Final"  
 for (layer in study_area_layers) {
   
   # Read the layer from the input GeoPackage
