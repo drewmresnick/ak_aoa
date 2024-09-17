@@ -1,5 +1,5 @@
 ##########################################################################
-### 13. Subsistence Harvest Fisheries Resources	ak_cr_004 suspended    ###
+### 14. Subsistence Harvest Fisheries Resources	ak_cr_004 suspended    ###
 ##########################################################################
 
 
@@ -136,7 +136,7 @@ for(i in 1:length(code_dict$study_area)){
         sf::st_transform("ESRI:102008") %>% # EPSG WKID 102008 (https://epsg.io/102008)
         # obtain data within hexed study area
         rmapshaper::ms_clip(hex_by_study) 
-        return(data_layer)
+      return(data_layer)
     }
     
     # Load historical lighthouse and pass it through the cleaning function above
