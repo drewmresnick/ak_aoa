@@ -134,7 +134,7 @@ for(i in 1:length(code_dict$study_area)){
       data_layer <- raw_data %>%
         # reproject the same coordinate reference system (crs) as the study area
         sf::st_transform("ESRI:102008") %>% # EPSG WKID 102008 (https://epsg.io/102008)
-        # obtain data within buffered hexed study area
+        # obtain data within hexed study area
         rmapshaper::ms_clip(hex_by_study) %>%
         return(data_layer)
     }
