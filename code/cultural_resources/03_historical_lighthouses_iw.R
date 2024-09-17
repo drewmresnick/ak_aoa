@@ -88,7 +88,7 @@ code_dict <-list(study_area = c("cordova",
                                 "petersburg",
                                 "seward",
                                 "sitka",
-                                "valdez",
+                                # "valdez", all of intertidal wetlands are constrained
                                 "wrangell"),
                  
                  code = c("co",
@@ -100,7 +100,7 @@ code_dict <-list(study_area = c("cordova",
                           "pe",
                           "se",
                           "si",
-                          "va",
+                          # "va", all of intertidal wetlands are constrained
                           "wr"))
 
 
