@@ -120,10 +120,6 @@ for(i in 1:length(code_dict$study_area)){
     # call the corresponding study area code
     dict_code <- code_dict$code[[i]]
     
-    # call in the dissolved hex grids
-    ## As there are two layers in the geopackage with the study area name,
-    ## it's essential to read out the full name to avoid selecting the incorrect one.
-    
     ## path to the dissolved hex grids that were derived from constraints outputs
     hex_path <- file.path(study_area_dir, code_dict$study_area[i], "5_intertidal_wetlands/d_suitability_data/constraints/constraints_suitability_iw.gpkg")
     
