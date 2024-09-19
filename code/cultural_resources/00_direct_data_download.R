@@ -146,8 +146,6 @@ download_list <- c(
   # historical lighthouses
   "https://marinecadastre.gov/downloads/data/mc/HistoricalLighthouse.zip",
   
-  # bear concentration areas
-  "https://data.axds.co/gs/mariculture/wfs?service=WFS&version=1.0.0&request=GetFeature&outputFormat=SHAPE-ZIP&typeName=mariculture:bear_concentration1"
 )
 
 #####################################

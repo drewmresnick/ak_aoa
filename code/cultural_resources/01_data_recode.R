@@ -88,19 +88,15 @@ communityhistory <- sf::st_read(dsn = file.path(data_dir, "community_culture_his
 harbors <- sf::st_read(dsn = file.path(data_dir, "harbors/AKDOTPF_Route_Data.shp"))
 
 
-# Bear concentration areas	ak_cr_007
-bears <- sf::st_read(dsn = file.path(data_dir, "bear_concentration1/bear_concentration1.shp"))
-
-
-# Land permit or lease - polygon	ak_cr_008
+# Land permit or lease - polygon	ak_cr_007
 land_permit <- sf::st_read(dsn = file.path(data_dir, "LandActivity_LandPermitOrLease/LandActivity_LandPermitOrLease.shp"))
 
 
-# Alaska National Parks, Preserves, Monuments	ak_cr_009
+# Alaska National Parks, Preserves, Monuments	ak_cr_008
 np_pres_monu <- sf::st_read(dsn = file.path(data_dir, "ak_np_preserves_monuments/Sensitive_Areas.shp"))
 
 
-# Shore Fishery Lease	ak_cr_010
+# Shore Fishery Lease	ak_cr_009
 shore_fishery_lease <- sf::st_read(dsn = file.path(data_dir, "shore_fishery_lease/NaturalResource_Aquaculture.shp"))
 
 
@@ -114,7 +110,6 @@ data <- list(lighthouse,
              subfish,
              communityhistory,
              harbors,
-             bears,
              land_permit,
              np_pres_monu,
              shore_fishery_lease
