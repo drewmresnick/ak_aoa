@@ -73,11 +73,11 @@ tribes <- sf::st_read(dsn = file.path(data_dir, "federally_recognized_tribes/CDO
 
 
 # Subsistence harvest non fisheries resources	ak_cr_003
-subnonfish <- sf::st_read(dsn = file.path(data_dir, "subsistence_harvest_nonfisheries_resources/subsistence_harvest_nonfisheries_resources.shp"))
+subnonfish <- sf::st_read(dsn = file.path(data_dir, "subsistence_nonfisheries_resources/subsistence_nonfisheries_resources.shp"))
 
 
 # Subsistence Harvest Fisheries Resources	ak_cr_004
-subfish <- sf::st_read(dsn = file.path(data_dir, "subsistence_harvest_fisheries_resources/subsistence_harvest_fisheries_resources.shp"))
+subfish <- sf::st_read(dsn = file.path(data_dir, "subsistence_fisheries_resources/subsistence_fisheries_resources.shp"))
 
 
 # Community Culture and History	ak_cr_005
@@ -88,18 +88,20 @@ communityhistory <- sf::st_read(dsn = file.path(data_dir, "community_culture_his
 harbors <- sf::st_read(dsn = file.path(data_dir, "harbors/AKDOTPF_Route_Data.shp"))
 
 
-# Land permit or lease - polygon	ak_cr_007
-land_permit <- sf::st_read(dsn = file.path(data_dir, "LandActivity_LandPermitOrLease/LandActivity_LandPermitOrLease.shp"))
-
-
-# Alaska National Parks, Preserves, Monuments	ak_cr_008
+# Alaska National Parks, Preserves, Monuments	ak_cr_007
 np_pres_monu <- sf::st_read(dsn = file.path(data_dir, "ak_np_preserves_monuments/Sensitive_Areas.shp"))
 
 
-# Shore Fishery Lease	ak_cr_009
+# Shore Fishery Lease	ak_cr_008
 shore_fishery_lease <- sf::st_read(dsn = file.path(data_dir, "shore_fishery_lease/NaturalResource_Aquaculture.shp"))
 
 
+# Subsistence Use Communities	ak_cr_009
+sub_use_com <- sf::st_read(dsn = file.path(data_dir, "subsistence_use_communities/subsistence_use_communities.shp"))
+
+
+# Communities - Incorporated and Unincorporated Cities, Boroughs, CDPs, Localities	ak_cr_010
+com_incorp_unincorp <- sf::st_read(dsn = file.path(data_dir, "communities_incorp_unincorp/Community_Locations_and_Boundaries.shp"))
 #####################################
 #####################################
 
@@ -110,9 +112,10 @@ data <- list(lighthouse,
              subfish,
              communityhistory,
              harbors,
-             land_permit,
              np_pres_monu,
-             shore_fishery_lease
+             shore_fishery_lease,
+             sub_use_com,
+             com_incorp_unincorp
              )
 
 #####################################
