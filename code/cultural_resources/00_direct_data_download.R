@@ -144,7 +144,7 @@ data_dir <- "C:/Users/Breanna.Xiong/Documents/R Scripts/ak_aoa/data/aa_explorati
 # Download list
 download_list <- c(
   # historical lighthouses
-  "https://marinecadastre.gov/downloads/data/mc/HistoricalLighthouse.zip",
+  "https://marinecadastre.gov/downloads/data/mc/HistoricalLighthouse.zip"
   
 )
 

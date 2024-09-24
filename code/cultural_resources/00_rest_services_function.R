@@ -129,11 +129,11 @@ file.rename(from = file.path(data_dir, list.files(data_dir, pattern = "CDO_Conta
 
 # Rename the General_CultureHistory to federally_recognized_tribes for a more descriptive title
 file.rename(from = file.path(data_dir, list.files(data_dir, pattern = "General_CultureHistory")),
-                                                  to = file.path(data_dir, "communit_culture_history"))
+                                                  to = file.path(data_dir, "community_culture_history"))
 
 
-# Rename the Communities_Locations_and_Boundaries to community_incorp_unincorp for a more descriptive title
-file.rename(from = file.path(data_dir, list.files(data_dir, pattern = "Communities_Locations_and_Boundaries")),
+# Rename the Community_Locations_and_Boundaries to community_incorp_unincorp for a more descriptive title
+file.rename(from = file.path(data_dir, list.files(data_dir, pattern = "Community_Locations_and_Boundaries")),
                                                   to = file.path(data_dir, "communities_incorp_unincorp"))
 
 
@@ -144,7 +144,6 @@ file.rename(from = file.path(data_dir, list.files(data_dir, pattern = "Communiti
 # Shore Fishery Lease
 
 url_list <- c(
-  "OpenData/LandActivity_LandPermitOrLease/MapServer/2", # Land permit or lease - polygon
   "OpenData/NaturalResource_Aquaculture/MapServer/3" # Shore Fishery Lease
 )
 
@@ -197,7 +196,7 @@ rest_services_function <- function(url_list, base_url, data_dir){
   data <- arcpullr::get_spatial_layer(data_url)
   
   # ***warning: change depending on the dataset wanted
-  dir_name <- "subsistence_harvest_fisheries_resources"
+  dir_name <- "subsistence_nonfisheries_resources"
   
   # create new directory for data
   dir_create <- dir.create(file.path(data_dir, dir_name))
@@ -210,8 +209,8 @@ rest_services_function <- function(url_list, base_url, data_dir){
 
 url_list <- c(
   # "Economics_Related/Economics_Subsistence/MapServer/2" ## Subsistence Use Communities
-  # "Economics_Related/Economics_Subsistence/MapServer/1" ## Subsistence harvest non fisheries resources
-  "Economics_Related/Economics_Subsistence/MapServer/0" ## Subsistence Harvest Fisheries Resources
+  "Economics_Related/Economics_Subsistence/MapServer/1" ## Subsistence harvest non fisheries resources
+  # "Economics_Related/Economics_Subsistence/MapServer/0" ## Subsistence Harvest Fisheries Resources
 )
 
 
