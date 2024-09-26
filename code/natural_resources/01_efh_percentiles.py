@@ -45,7 +45,7 @@ for file in raw_name:
 # print(new_path_50th)
 
 
-# Description: Rename a file geodatabase feature class #############################
+# Description: Rename a feature class #############################
 
 # Set local variables
 data_type = "FeatureClass"
